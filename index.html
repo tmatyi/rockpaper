@@ -1,0 +1,84 @@
+<script>
+  function game() {
+    let computerScore = 0;
+    let playerScore = 0;
+
+    for (let i = 0; i < 5; i++) {
+      function computerPlay() {
+        let gep = Math.floor(Math.random() * 3);
+        switch (gep) {
+          case 0:
+            return "Rock";
+          case 1:
+            return "Paper";
+          case 2:
+            return "Scrissors";
+        }
+      }
+      let computerSelection = computerPlay();
+      let playerSelection = window.prompt("Rock, Paper or Scrissors?");
+
+      function playRound() {
+        playerSelection.toLowerCase();
+        switch (playerSelection) {
+          case "rock":
+            switch (computerSelection) {
+              case "Rock":
+                console.log("It's a draw!");
+                break
+              case "Paper":
+                console.log("You Lose! Paper beats Rock!");
+                computerScore++;
+                break
+              case "Scrissors":
+                console.log("You Won! Rock beats Scrissors!");
+                playerScore++;
+                break
+            }
+            break
+          case "paper":
+            switch (computerSelection) {
+              case "Rock":
+                console.log("You Won! Paper beats Rock!");
+                playerScore++;
+                break
+              case "Paper":
+                console.log("It's a draw!");
+                break
+              case "Scrissors":
+                console.log("You Lose! Scrissors beats Paper!");
+                computerScore++;
+                break
+            }
+            break
+          case "scrissors":
+            switch (computerSelection) {
+              case "Rock":
+                console.log("You Lose! Rock beats Scrissors!");
+                computerScore++;
+                break
+              case "Paper":
+                console.log("You Won! Scrissors beats Paper!");
+                playerScore++;
+                break
+              case "Scrissors":
+                console.log("It's a draw");
+                break
+            }
+            break
+        }
+      }
+      playRound()
+    }
+    if (playerScore>computerScore){
+        return ("You Won the game! Final resurt: Computer: "+computerScore+", your score: "+playerScore)
+    }
+    else if(playerScore<computerScore){
+        return ("You Lose the game! Final resurt: Computer: "+computerScore+", your score: "+playerScore)
+    }
+    else {
+        return ("It's a Draw! Final resurt: Computer: "+computerScore+", your score: "+playerScore)
+    }
+  } 
+console.log(game())
+</script>
